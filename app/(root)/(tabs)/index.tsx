@@ -10,10 +10,11 @@ export default function Index() {
         alignItems: "center",
       }}
     >
+      <Text className="text-2xl font-rubik-bold">Welcome to TrueHome</Text>
       <Link href="/sign-in"> Sign In</Link>
       <Link href="/explore"> Explore</Link>
       <Link href="/profile"> Profile</Link>
-      <Link href="/properties/1"> Property 1</Link>
+      {/* <Link href="/properties/1"> Property 1</Link> */}
     </View>
   );
 }
