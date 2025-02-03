@@ -73,8 +73,8 @@ export async function logout() {
 }
 // LOGOUT FUNCTION ENDS
 
-// GET USER FUNCTION STARTS
-export async function getUser() {
+// GET CURRENT USER FUNCTION STARTS
+export async function getCurrentUser() {
   try {
     const response = await account.get();
 
@@ -91,4 +91,4 @@ export async function getUser() {
     return null;
   }
 }
-// GET USER FUNCTION ENDS
+// GET CURRENT USER FUNCTION ENDS
