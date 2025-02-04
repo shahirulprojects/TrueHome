@@ -26,6 +26,7 @@ Built using the latest Expo, TrueHome is a full-stack real estate app that integ
 
 - Expo
 - React Native
+- OAuth 2.0
 - TypeScript
 - Nativewind
 - Appwrite
