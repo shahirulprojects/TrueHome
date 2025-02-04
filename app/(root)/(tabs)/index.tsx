@@ -4,14 +4,24 @@ import Search from "@/components/Search";
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 import { useGlobalContext } from "@/lib/global-provider";
+import seed from "@/lib/seed";
 import { Link } from "expo-router";
-import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const { user } = useGlobalContext();
   return (
     <SafeAreaView className="bg-white h-full">
+      {/* the button is used to seed the database with initial data */}
+      {/* <Button title="Seed" onPress={seed} /> */}
       {/* FlatList is used here instead of ScrollView because it's more efficient for rendering a large number of items, it will only render the items that are currently visible in the viewport, and it will recycle the items that are no longer visible (memory efficient) */}
       <FlatList
         data={[1, 2, 3, 4]}
@@ -54,13 +64,13 @@ export default function Index() {
                 </TouchableOpacity>
               </View>
               <FlatList
-                data={[1, 2, 3, 4]}
+                data={[5, 6, 7]}
                 renderItem={({ item }) => <FeaturedCard />}
                 keyExtractor={(item) => item.toString()}
                 horizontal
                 bounces={false} // Disable bouncing on the horizontal scroll because if not we can actually hold the flatlist and drag it up and down
                 showsHorizontalScrollIndicator={false}
-                contentContainerClassName="flex mt-5gap-5"
+                contentContainerClassName="flex mt-5 gap-5"
               />
             </View>
             <View className="flex flex-row items-center justify-between">
