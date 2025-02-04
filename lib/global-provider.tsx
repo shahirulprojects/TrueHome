@@ -4,11 +4,20 @@ import { createContext, ReactNode, useContext } from "react";
 import { useAppwrite } from "./useAppwrite";
 import { getCurrentUser } from "./appwrite";
 
+// matches appwrite's user model structure
 interface User {
   $id: string;
-  email: string;
+  $createdAt: string;
+  $updatedAt: string;
   name: string;
+  email: string;
   avatar: string;
+  registration: string;
+  status: boolean;
+  passwordUpdate: string;
+  emailVerification: boolean;
+  prefs: object;
+  accessedAt: string;
 }
 
 interface GlobalContextType {
@@ -26,8 +35,20 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   // this checks if the user object exists and converts it to a boolean value, so isLoggedIn will be true if user is not null or undefined
   const isLoggedIn = !!user;
 
+  // cast the refetch function to match the expected type signature
+  const typedRefetch: GlobalContextType["refetch"] = async (newParams) => {
+    await refetch(newParams || {});
+  };
+
   return (
-    <GlobalContext.Provider value={{ isLoggedIn, user, loading, refetch }}>
+    <GlobalContext.Provider
+      value={{
+        isLoggedIn,
+        user: (user === undefined ? null : user) as User | null,
+        loading,
+        refetch: typedRefetch,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
