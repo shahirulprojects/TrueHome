@@ -169,3 +169,20 @@ export async function getProperties({
 }
 
 // FILTER PROPERTY FUNCTION ENDS
+
+// GET PROPERTY BY ID FUNCTION STARTS
+export async function getPropertyById({ id }: { id: string }) {
+  try {
+    const result = await databases.getDocument(
+      config.databaseId!,
+      config.propertiesCollectionId!,
+      id
+    );
+    return result;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+// GET PROPERTY BY ID FUNCTION ENDS
